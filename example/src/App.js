@@ -5,34 +5,45 @@ import OrgChart from './orgChart';
 function App() {
   const initechOrg = {
     name: 'Bill Lumbergh',
-    actor: 'Gary Cole',
+    show_children: false,
     children: [
       {
         name: 'Peter Gibbons',
-        actor: 'Ron Livingston',
-        hide_children: false,
+        show_children: false,
         children: [
           {
             name: 'And More!!',
-            actor: 'This is just to show how to build a complex tree with multiple levels of children. Enjoy!'
+            show_children: false
           }
         ]
       },
       {
         name: 'Milton Waddams',
-        actor: 'Stephen Root'
+        show_children: false
       },
       {
         name: 'Bob Slydell',
-        actor: 'John C. McGi...'
+        show_children: false
       }
     ]
   };
 
+  const expandCollapseChildrenNode = e => {
+    const targetElement = e.target.parentNode.parentNode.offsetParent.lastChild;
+
+    let classname = '';
+    if (targetElement.className !== ' hidden') {
+      classname = ' hidden';
+    }
+
+    return (targetElement.className = classname);
+  };
+
   const MyNodeComponent = ({ node }) => {
     return (
-      <div className="initechNode" onClick={() => alert('Hi my real name is: ' + node.actor)}>
+      <div className="initechNode">
         {node.name}
+        {node.children && <div onClick={expandCollapseChildrenNode}>Click</div>}
       </div>
     );
   };
