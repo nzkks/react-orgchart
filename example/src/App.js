@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
-import OrgChart from 'react-orgchart';
-import 'react-orgchart/index.css';
+import OrgChart from './orgChart';
 
 function App() {
   const initechOrg = {
@@ -11,6 +10,7 @@ function App() {
       {
         name: 'Peter Gibbons',
         actor: 'Ron Livingston',
+        hide_children: false,
         children: [
           {
             name: 'And More!!',
