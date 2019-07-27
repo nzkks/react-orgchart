@@ -1,4 +1,5 @@
 import React from 'react';
+import { Table, TableBody, TableRow, TableCell } from '@material-ui/core';
 
 const OrgChart = ({ tree, NodeComponent }) => {
   const renderChildren = node => {
@@ -12,29 +13,28 @@ const OrgChart = ({ tree, NodeComponent }) => {
 
     let extra_class = '';
     if (node.hide_children === true) {
-      debugger;
       extra_class = ' hidden';
     }
 
     const nodeLineBelow = (
-      <td colSpan={(node.children || []).length * 2} className={'nodeGroupCellLines ' + extra_class}>
-        <table className={'nodeLineTable ' + extra_class}>
-          <tbody>
-            <tr>
-              <td colSpan={2} className={'nodeLineCell nodeGroupLineVerticalMiddle ' + extra_class} />
-              <td colSpan={2} className={'nodeLineCell ' + extra_class} />
-            </tr>
-          </tbody>
-        </table>
-      </td>
+      <TableCell colSpan={(node.children || []).length * 2} className={'nodeGroupCellLines ' + extra_class}>
+        <Table className={'nodeLineTable ' + extra_class}>
+          <TableBody>
+            <TableRow>
+              <TableCell colSpan={2} className={'nodeLineCell nodeGroupLineVerticalMiddle ' + extra_class} />
+              <TableCell colSpan={2} className={'nodeLineCell ' + extra_class} />
+            </TableRow>
+          </TableBody>
+        </Table>
+      </TableCell>
     );
 
     const childrenLinesAbove = (node.children || []).map((child, childIndex) => (
-      <td colSpan="2" className={'nodeGroupCellLines ' + extra_class} key={childIndex}>
-        <table className={'nodeLineTable ' + extra_class}>
-          <tbody>
-            <tr>
-              <td
+      <TableCell colSpan="2" className={'nodeGroupCellLines ' + extra_class} key={childIndex}>
+        <Table className={'nodeLineTable ' + extra_class}>
+          <TableBody>
+            <TableRow>
+              <TableCell
                 colSpan={2}
                 className={
                   'nodeLineCell nodeGroupLineVerticalMiddle ' +
@@ -42,35 +42,35 @@ const OrgChart = ({ tree, NodeComponent }) => {
                   (hasSiblingLeft(childIndex) ? ' nodeLineBorderTop' : '')
                 }
               />
-              <td
+              <TableCell
                 colSpan={2}
                 className={'nodeLineCell ' + extra_class + (hasSiblingRight(childIndex) ? ' nodeLineBorderTop' : '')}
               />
-            </tr>
-          </tbody>
-        </table>
-      </td>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </TableCell>
     ));
 
     const children = (node.children || []).map((child, childIndex) => (
-      <td colSpan="2" className={'nodeGroupCell ' + extra_class} key={childIndex}>
+      <TableCell colSpan="2" className={'nodeGroupCell ' + extra_class} key={childIndex}>
         {renderChildren(child)}
-      </td>
+      </TableCell>
     ));
 
     return (
-      <table className="orgNodeChildGroup">
-        <tbody>
-          <tr>
-            <td className="nodeCell" colSpan={(node.children || []).length * 2}>
+      <Table className="orgNodeChildGroup">
+        <TableBody>
+          <TableRow>
+            <TableCell className="nodeCell" colSpan={(node.children || []).length * 2}>
               <NodeComponent node={node} />
-            </td>
-          </tr>
-          <tr>{(node.children || []).length > 0 && nodeLineBelow}</tr>
-          <tr>{childrenLinesAbove}</tr>
-          <tr>{children}</tr>
-        </tbody>
-      </table>
+            </TableCell>
+          </TableRow>
+          <TableRow>{(node.children || []).length > 0 && nodeLineBelow}</TableRow>
+          <TableRow>{childrenLinesAbove}</TableRow>
+          <TableRow>{children}</TableRow>
+        </TableBody>
+      </Table>
     );
   };
 
