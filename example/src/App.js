@@ -4,25 +4,25 @@ import OrgChart from './orgChart';
 
 function App() {
   const treeData = {
-    name: 'Bill Lumbergh',
+    name: 'John Doe',
     show_children: false,
     children: [
       {
-        name: 'Peter Gibbons',
+        name: 'Joe Bloggs',
         show_children: false,
         children: [
           {
-            name: 'And More!!',
+            name: 'Richard Roe',
             show_children: false
           }
         ]
       },
       {
-        name: 'Milton Waddams',
+        name: 'Jane Doe',
         show_children: false
       },
       {
-        name: 'Bob Slydell',
+        name: 'John Smith',
         show_children: false
       }
     ]
