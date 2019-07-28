@@ -3,7 +3,7 @@ import './App.css';
 import OrgChart from './orgChart';
 
 function App() {
-  const initechOrg = {
+  const treeData = {
     name: 'Bill Lumbergh',
     show_children: false,
     children: [
@@ -41,7 +41,7 @@ function App() {
 
   const MyNodeComponent = ({ node }) => {
     return (
-      <div className="initechNode">
+      <div className="treeNode">
         {node.name}
         {node.children && <div onClick={expandCollapseChildrenNode}>Click</div>}
       </div>
@@ -49,8 +49,8 @@ function App() {
   };
 
   return (
-    <div className="App" id="initechOrgChart">
-      <OrgChart tree={initechOrg} NodeComponent={MyNodeComponent} />
+    <div className="App" id="treeOrgChart">
+      <OrgChart tree={treeData} NodeComponent={MyNodeComponent} />
     </div>
   );
 }

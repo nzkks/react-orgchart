@@ -49,7 +49,7 @@
   display: none;
 }
 
-.initechNode {
+.treeNode {
   border: solid 3px red;
   border-radius: 3px;
   padding: 5px;
@@ -57,10 +57,10 @@
   display: inline-block;
 }
 
-#initechOrgChart .orgNodeChildGroup .nodeGroupLineVerticalMiddle {
+#treeOrgChart .orgNodeChildGroup .nodeGroupLineVerticalMiddle {
   border-right: solid 3px red;
 }
 
-#initechOrgChart .nodeLineBorderTop {
+#treeOrgChart .nodeLineBorderTop {
   border-top: solid 3px red;
 }
